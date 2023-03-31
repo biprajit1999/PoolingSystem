@@ -2,7 +2,8 @@ var express=require("express");
 var bodyParser=require("body-parser");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/placement2');
+// mongoose.connect('mongodb://localhost:27017/placement2');
+mongoose.connect('mongodb+srv://biprajit:biprajit@cluster0.has27be.mongodb.net/placement?retryWrites=true&w=majority');
 var db=mongoose.connection;
 db.on('error', console.log.bind(console, "connection error"));
 db.once('open', function(callback){
@@ -40,7 +41,7 @@ app.post('/sign_up', function(req,res){
 		"attendence":attendence,
 		"backlogs":backlogs,
 		"tech":tech,
-		"myList":myList
+		"JobRole":myList
 	}
 db.collection('details').insertOne(data,function(err, collection){
 		if (err) throw err;
